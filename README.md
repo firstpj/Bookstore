@@ -1,7 +1,7 @@
 <div align="center">
     <br/>
 
-  <h3><b>Math Magicians</b></h3>
+  <h3><b>Bookstore</b></h3>
 
 </div>
 
@@ -24,9 +24,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Math Magicians] <a name="about-project"></a>
+# 📖 [Bookstore] <a name="about-project"></a>
 
-Math Magicians, it's a simple website based on React and linters.
+Greetings to Bookstore. The online platform that caters to your reading requirements. Bookstore aims to streamline your experience in the realm of mathematics with a polished and intuitive interface.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -103,8 +103,6 @@ npx stylelint "**/*.{css,scss}"
 npx eslint .
 ```
 
-## 🚀 Live Demo <a name="live-demo"></a>
-- **[live demo link](https://math-magician-7aoj.onrender.com)**
 
 ### Deployment <a name="deployment"></a>
 
