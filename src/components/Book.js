@@ -4,11 +4,23 @@ const Book = (props) => {
   const { title, author } = props;
 
   return (
-    <>
-      <p>{title}</p>
-      <p>{author}</p>
-      <button type="button">Remove</button>
-    </>
+    <li>
+      <p>
+        <span>
+          Book title :
+        </span>
+        {title}
+      </p>
+      <div>
+        <p>
+          <span>
+            Author :
+          </span>
+          {author}
+        </p>
+        <button type="button">Remove</button>
+      </div>
+    </li>
   );
 };
 
