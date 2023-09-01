@@ -1,22 +1,32 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Book from './Book';
+import { getBooksData } from '../redux/books/booksSlice';
 
 const BookCollection = () => {
-  const bookList = useSelector((state) => state.book.bookList);
+  const {
+    books, isLoading, error, isSuccessful,
+  } = useSelector((store) => store.book);
+  const dispatch = useDispatch();
 
-  return (
-    <>
-      {bookList.map((book) => (
-        <Book
-          key={book.item_id}
-          title={book.title}
-          author={book.author}
-          item_id={book.item_id}
-        />
-      ))}
-    </>
-  );
+  useEffect(() => {
+    dispatch(getBooksData());
+  }, [dispatch, isSuccessful]);
+
+  if (isLoading) {
+    return (
+      <div>
+        <p>Is Loading...</p>
+      </div>
+    );
+  }
+  if (error) return <h3>Something went wrong</h3>;
+  if (books.length === 0) return <h3>Books Not Found. Please try again later</h3>;
+  return books.map((book) => (
+    <div key={book.id}>
+      <Book key={book.id} book={book} />
+    </div>
+  ));
 };
 
 export default BookCollection;
