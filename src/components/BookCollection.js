@@ -20,7 +20,7 @@ const BookCollection = () => {
       </div>
     );
   }
-  if (error) return <h3>Something went wrong</h3>;
+  if (error) return <h3>Oops! Something went wrong!</h3>;
   if (books.length === 0) return <h3>Books Not Found. Please try again later</h3>;
   return books.map((book) => (
     <div key={book.id}>
