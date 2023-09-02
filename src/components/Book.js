@@ -2,32 +2,61 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { removeBook } from '../redux/books/booksSlice';
 
-const Book = ({ title, author, item_id: ïtemId }) => {
+const Book = (props) => {
+  const {
+    id, title, author, category,
+  } = props;
   const dispatch = useDispatch();
 
-  const handleRemove = () => {
-    dispatch(removeBook(ïtemId));
+  const handleRemoveClick = () => {
+    dispatch(removeBook(id));
   };
 
   return (
-    <div>
-      <form>
-        <div>
-          <p>{title}</p>
-          <p>{author}</p>
+    <li className="book">
+      <div className="left-block">
+        <div className="book-info">
+          <span className="category">{category}</span>
+          <span className="title">{title}</span>
+          <span className="author">{author}</span>
         </div>
-        <button onClick={handleRemove} type="button">
-          Remove
-        </button>
-      </form>
-    </div>
+        <div className="list-btn">
+          <button type="button">Comments </button>
+          |
+          <button
+            type="button"
+            onClick={handleRemoveClick}
+          >
+            Remove
+          </button>
+          |
+          <button type="button">Edit</button>
+        </div>
+      </div>
+      <div className="right-block">
+        <div className="reading-progress">
+          <div className="progress" />
+          <div className="progress-percentage">
+            <span className="percentage">76%</span>
+            <span className="completed">Completed</span>
+          </div>
+        </div>
+        <hr className="vertical-line" />
+        <div className="current-chapter">
+          <span className="heading">CURRENT CHAPTER</span>
+          <span className="chapter">Chapter 17</span>
+          <button type="button" className="update-btn">UPDATE PROGRESS</button>
+        </div>
+      </div>
+    </li>
   );
 };
 
 Book.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  item_id: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
 };
 
 export default Book;
