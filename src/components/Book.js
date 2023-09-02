@@ -1,62 +1,57 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBook } from '../redux/books/booksSlice';
+import { deleteBookFromApi } from '../redux/books/booksSlice';
 
-const Book = (props) => {
-  const {
-    id, title, author, category,
-  } = props;
+const Book = ({ book }) => {
   const dispatch = useDispatch();
 
-  const handleRemoveClick = () => {
-    dispatch(removeBook(id));
-  };
-
   return (
-    <li className="book">
-      <div className="left-block">
-        <div className="book-info">
-          <span className="category">{category}</span>
-          <span className="title">{title}</span>
-          <span className="author">{author}</span>
-        </div>
-        <div className="list-btn">
-          <button type="button">Comments </button>
-          |
-          <button
-            type="button"
-            onClick={handleRemoveClick}
-          >
-            Remove
-          </button>
-          |
-          <button type="button">Edit</button>
-        </div>
+    <div>
+      <div key={book.id}>
+        <p>{book.category}</p>
+        <p>{book.title}</p>
+        <p>{book.author}</p>
+        <ul>
+          <li>
+            <button type="button">
+              Comments
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              onClick={() => {
+                dispatch(deleteBookFromApi(book.id));
+              }}
+            >
+              Remove
+            </button>
+          </li>
+          <li>
+            <button type="button">
+              Edit
+            </button>
+          </li>
+        </ul>
       </div>
-      <div className="right-block">
-        <div className="reading-progress">
-          <div className="progress" />
-          <div className="progress-percentage">
-            <span className="percentage">76%</span>
-            <span className="completed">Completed</span>
-          </div>
-        </div>
-        <hr className="vertical-line" />
-        <div className="current-chapter">
-          <span className="heading">CURRENT CHAPTER</span>
-          <span className="chapter">Chapter 17</span>
-          <button type="button" className="update-btn">UPDATE PROGRESS</button>
-        </div>
+      <div>
+        <p>CURRENT PAGE</p>
+        <p>Chapter 10</p>
+        <button type="button">
+          UPDATING...
+        </button>
       </div>
-    </li>
+    </div>
   );
 };
 
 Book.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
+  book: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    author: PropTypes.string,
+    category: PropTypes.string,
+  }).isRequired,
 };
 
 export default Book;
