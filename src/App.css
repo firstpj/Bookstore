@@ -72,6 +72,7 @@ header img {
 }
 
 .book {
+  flex-wrap: wrap;
   display: flex;
   margin-top: 1em;
   padding: 3%;
@@ -147,9 +148,9 @@ form button {
 }
 
 .right-block {
+  width: max-content;
   display: flex;
   justify-content: space-between;
-  width: 55%;
   align-items: center;
 }
 
@@ -220,7 +221,7 @@ form button {
 }
 
 .update-btn {
-  width: 12em;
+  width: max-content;
   border-radius: 3px;
   background-color: #0290ff;
   font-family: 'Roboto Slab', serif;
