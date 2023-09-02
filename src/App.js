@@ -1,26 +1,18 @@
-import {
-  BrowserRouter, Routes, Route,
-} from 'react-router-dom';
-import './App.css';
-import Home from './components/Home';
-import NotFound from './components/NotFound';
-import Navbar from './components/Navbar';
+import { Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import BooksPage from './components/BooksPage';
 import Categories from './components/Categories';
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/categories" element={<Categories />} />
-          </Routes>
-        </BrowserRouter>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<BooksPage />} />
+        <Route path="/categories" element={<Categories />} />
+      </Routes>
+    </>
   );
 }
 
