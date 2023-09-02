@@ -38,7 +38,7 @@ const Form = () => {
   return (
     <div className="form-section">
       <hr />
-      <h2 className="form-title">ADD A NEW BOOK</h2>
+      <h2 className="form-title">ADD NEW BOOK</h2>
       <form onSubmit={handleFormSubmit}>
         <input type="text" placeholder="Book title" value={title} onChange={handleTitleChange} required />
         <input type="text" placeholder="Author" value={author} onChange={handleAuthorChange} required />
